@@ -7,4 +7,5 @@ There's a target for each challenge, to generate projects run:
 `cmake -S . -B my_build_folder`
 
 Then to build:
+
 `cmake --build my_build_folder`
