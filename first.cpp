@@ -29,7 +29,7 @@ int main()
 	{
 		for ( auto rhs = lhs + 1; rhs != numbers.end() && !found; rhs++ )
 		{
-			if (*rhs + *lhs == target_number)
+			if (*lhs + *rhs == target_number)
 			{
 				const auto result = *rhs * *lhs; // all the stars because it's christmas
 				std::cout << "Part one's answer is " << result << std::endl;
@@ -47,7 +47,7 @@ int main()
 		{
 			for ( auto rhs = mhs + 1; rhs != numbers.end() && !found; rhs++ )
 			{
-				if (*rhs + *mhs + *lhs == target_number)
+				if (*lhs + *mhs + *rhs == target_number)
 				{
 					const auto result = *rhs * *mhs * *lhs; // all the stars because it's still christmas
 					std::cout << "Part two's answer is " << result;
