@@ -47,12 +47,12 @@ int main()
 		{
 			for ( auto rhs = mhs + 1; rhs != numbers.end() && !found; rhs++ )
 			{
-			if (*rhs + *mhs + *lhs == target_number)
-			{
-				const auto result = *rhs * *mhs * *lhs; // all the stars because it's still christmas
-				std::cout << "Part two's answer is " << result;
-				found = true;
-			}
+				if (*rhs + *mhs + *lhs == target_number)
+				{
+					const auto result = *rhs * *mhs * *lhs; // all the stars because it's still christmas
+					std::cout << "Part two's answer is " << result;
+					found = true;
+				}
 			}
 		}
 	}
