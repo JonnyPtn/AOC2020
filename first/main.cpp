@@ -10,7 +10,7 @@ int main()
 {
 	// Read input
 	std::vector<uint16_t> numbers;
-	std::ifstream file("first_input.txt");
+	std::ifstream file("input.txt");
 
 	if ( file )
 	{
