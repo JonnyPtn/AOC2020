@@ -49,7 +49,7 @@ int main()
 
 	const auto one_by_one = count_trees( 1, 1 );
 	const auto three_by_one = part_1_answer; // no need to recalculate
-	const auto five_by_one = count_trees( 5, 1 ); 
+	const auto five_by_one = count_trees( 5, 1 );
 	const auto seven_by_one = count_trees( 7, 1 );
 	const auto one_by_two = count_trees( 1, 2 );
 
