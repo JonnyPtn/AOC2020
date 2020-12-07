@@ -12,8 +12,8 @@
 //    iyr( Issue Year ) - four digits; at least 2010 and at most 2020.
 //    eyr( Expiration Year ) - four digits; at least 2020 and at most 2030.
 //    hgt( Height ) - a number followed by either cm or in:
-//    If cm, the number must be at least 150 and at most 193.
-//    If in, the number must be at least 59 and at most 76.
+//		- If cm, the number must be at least 150 and at most 193.
+//		- If in, the number must be at least 59 and at most 76.
 //    hcl( Hair Color ) - a # followed by exactly six characters 0 - 9 or a - f.
 //    ecl( Eye Color ) - exactly one of : amb blu brn gry grn hzl oth.
 //    pid( Passport ID ) - a nine - digit number, including leading zeroes.
@@ -78,10 +78,28 @@ int main()
 		// hgt( Height ) - a number followed by either cm or in:
 		if ( valid = valid && !passport_fields[height].empty() )
 		{
-			std::regex height_pattern{ "\\d+(cm|in)" };
-			if ( !std::regex_match( passport_fields[height], height_pattern ) )
+			std::regex height_pattern{ "(\\d+)(cm|in)" };
+			std::smatch match;
+			if ( !std::regex_match( passport_fields[height], match, height_pattern ) )
 			{
 				valid = false;
+			}
+			else
+			{
+				// If cm, the number must be at least 150 and at most 193.
+				// If in, the number must be at least 59 and at most 76.
+				const auto value = std::stoi( match[1] );
+				if ( match[2] == "cm" )
+				{
+					if ( value < 150 || value > 193 )
+					{
+						valid = false;
+					}
+				}
+				else if ( value < 59 || value > 76 )
+				{
+					valid = false;
+				}
 			}
 		}
 
@@ -109,7 +127,6 @@ int main()
 		if ( valid = valid && !passport_fields[passport_id].empty() )
 		{
 			std::regex id_pattern{ "\\d{9}" };
-			const auto field = passport_fields[passport_id];
 			if ( !std::regex_match( passport_fields[passport_id], id_pattern ) )
 			{
 				valid = false;
