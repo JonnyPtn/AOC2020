@@ -49,7 +49,7 @@ int main()
 		if ( valid = valid && !passport_fields[birth_year].empty() )
 		{
 			const auto birth_year_value = std::stoi( passport_fields[birth_year] );
-			if ( birth_year_value <= 1920 || birth_year_value >= 2002 )
+			if ( birth_year_value < 1920 || birth_year_value > 2002 )
 			{
 				valid = false;
 			}
@@ -59,7 +59,7 @@ int main()
 		if ( valid = valid && !passport_fields[issue_year].empty() )
 		{
 			const auto issue_year_value = std::stoi( passport_fields[issue_year] );
-			if ( issue_year_value <= 2010 || issue_year_value >= 2020 )
+			if ( issue_year_value < 2010 || issue_year_value > 2020 )
 			{
 				valid = false;
 			}
@@ -69,7 +69,7 @@ int main()
 		if ( valid = valid && !passport_fields[expiration_year].empty() )
 		{
 			const auto expiration_year_value = std::stoi( passport_fields[expiration_year] );
-			if ( expiration_year_value <= 2020 || expiration_year_value >= 2030 )
+			if ( expiration_year_value < 2020 || expiration_year_value > 2030 )
 			{
 				valid = false;
 			}
@@ -109,6 +109,7 @@ int main()
 		if ( valid = valid && !passport_fields[passport_id].empty() )
 		{
 			std::regex id_pattern{ "\\d{9}" };
+			const auto field = passport_fields[passport_id];
 			if ( !std::regex_match( passport_fields[passport_id], id_pattern ) )
 			{
 				valid = false;
