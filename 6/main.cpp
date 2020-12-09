@@ -68,7 +68,7 @@ int main()
 		group_counts.push_back( total_count );
 	}
 
-	const auto sum_total = std::accumulate( group_counts.begin(), group_counts.end(), 0 );
+	const auto sum_total = std::accumulate( group_counts.begin(), group_counts.end(), 0ull );
 	std::cout << "Part 2 answer: " << sum_total << std::endl;
 
 	return 0;
